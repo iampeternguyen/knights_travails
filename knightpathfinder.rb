@@ -1,27 +1,30 @@
 require_relative 'polytreenode'
 
 class KnightPathFinder
-    def initialize(start)
-        @root_node = PolyTreeNode.new(start)
-        build_move_tree
+  attr_accessor :considered_positions
+  def initialize(start)
+    @root_node = PolyTreeNode.new(start)
+    @considered_positions = [[0,0], [1,3]]
+    build_move_tree
+  end
+
+  def build_move_tree
+    
+  end
+
+  def self.valid_moves(pos)
+    deltas = [[-1, -1], [-1, 0], [-1, 1], [ 0, -1], [ 0, 1], [ 1, -1], [ 1, 0], [ 1, 1]]
+    row, col = pos 
+    potential_moves = []
+    deltas.each do |delta|
+      new_row = row + delta[0]
+      new_col = col + delta[1]
+      potential_moves << [new_row, new_col] if new_row.between?(0,7) && new_col.between?(0,7)
     end
+    potential_moves
+  end
 
-    def build_move_tree
-    end
-
-    def self.valid_move(pos)
-        row, col = pos 
-        row.between?(0,7) && col.between?(0,7)
-
-
-
-    end
-    # delta = [
-    #     [-1, -1], [-1, 0], [-1, 1],
-    #     [ 0, -1],        , [ 0, 1],
-    #     [ 1, -1], [ 1, 0], [ 1, 1]
-    # ]
 end
 
-
-p KnightPathFinder.valid_move([0, 8])
+knight = KnightPathFinder.new([0,0])
+p knight.class.valid_moves([2,2])
