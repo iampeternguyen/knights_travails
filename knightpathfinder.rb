@@ -9,11 +9,19 @@ class KnightPathFinder
     def build_move_tree
     end
 
-    def self.valid_moves
-        
-    end
+    def self.valid_move(pos)
+        row, col = pos 
+        row.between?(0,7) && col.between?(0,7)
 
+
+
+    end
+    # delta = [
+    #     [-1, -1], [-1, 0], [-1, 1],
+    #     [ 0, -1],        , [ 0, 1],
+    #     [ 1, -1], [ 1, 0], [ 1, 1]
+    # ]
 end
 
-knight = KnightPathFinder.new
-p knight
+
+p KnightPathFinder.valid_move([0, 8])
