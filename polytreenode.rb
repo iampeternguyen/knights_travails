@@ -27,7 +27,7 @@ class PolyTreeNode
   end
 
   def inspect
-    { 'value' => @value, 'parent' => @parent }.inspect
+    { 'value' => @value, 'child' => @child }.inspect
   end
 
   def dfs(target)
