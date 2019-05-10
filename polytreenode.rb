@@ -7,9 +7,7 @@ class PolyTreeNode
   end
 
   def parent=(parent)
-    if parent.nil?
-      return @parent = nil
-    elsif @parent && @parent != parent
+    if @parent && @parent != parent
       @parent.children.slice!(@parent.children.index(self))
     end
     @parent = parent
