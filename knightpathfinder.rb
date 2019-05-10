@@ -32,7 +32,7 @@ class KnightPathFinder
   end
 
   def self.valid_moves(pos)
-    deltas = [[-1, -1], [-1, 0], [-1, 1], [ 0, -1], [ 0, 1], [ 1, -1], [ 1, 0], [ 1, 1]]
+    deltas = [[-2, -1], [-2, 1], [-1, 2], [ 1, 2], [ 2, -1], [ 2, 1], [ -1, -2], [ 1, -2]]
     row, col = pos 
     potential_moves = []
     deltas.each do |delta|
@@ -62,7 +62,6 @@ class KnightPathFinder
   end
 end
 
-knight = KnightPathFinder.new([0,0])
-# p knight.find_path([7,6])
-# p knight.find_path([6,2])
-p KnightPathFinder.valid_moves([0,0])
+kpf = KnightPathFinder.new([0,0])
+p kpf.find_path([7, 6]) # => [[0, 0], [1, 2], [2, 4], [3, 6], [5, 5], [7, 6]]
+p kpf.find_path([6, 2]) # => [[0, 0], [1, 2], [2, 0], [4, 1], [6, 2]]
