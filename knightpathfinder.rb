@@ -50,7 +50,19 @@ class KnightPathFinder
     potential_moves
   end
 
+  def find_path(end_pos)
+    target = self.root_node.bfs(end_pos)
+    trace_path_back(target)
+  end
+
+  def trace_path_back(target)
+    path = [target.value]
+    path = trace_path_back(target.parent) + path unless target.parent.nil?
+    path
+  end
 end
 
 knight = KnightPathFinder.new([0,0])
-p knight.root_node
+# p knight.find_path([7,6])
+# p knight.find_path([6,2])
+p KnightPathFinder.valid_moves([0,0])
