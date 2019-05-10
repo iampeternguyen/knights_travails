@@ -24,8 +24,12 @@ class PolyTreeNode
     if @children.include?(child)
           child.parent = nil
     else
-      raise "nodei s not a child"
+      raise "node is not a child"
     end
+  end
+
+  def inspect
+    { 'value' => @value, 'children' => @children }.inspect
   end
 
   def dfs(target)
